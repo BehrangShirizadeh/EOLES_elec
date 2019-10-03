@@ -25,10 +25,13 @@ alias(h,hh);
 *-------------------------------------------------------------------------------
 *                                Inputs
 *-------------------------------------------------------------------------------
-parameter month(h)  /0*743 1, 744*1439 2, 1440*2183 3, 2184*2903 4
-                    2904*3647 5, 3648*4367 6, 4368*5111 7, 5112*5855 8
-                    5856*6575 9, 6576*7319 10, 7320*8039 11, 8040*8759 12/
 $Offlisting
+parameter month(h) 'relating the hours to the months' 
+/
+$ondelim
+$include  inputs/month.csv
+$offdelim
+/;
 parameter load_factor(vre,h) 'Production profiles of VRE'
 /
 $ondelim
@@ -68,7 +71,7 @@ $offdelim
 parameter capa_max(vre) 'maximum capacities of the technologies in GW'
 /
 $ondelim
-$include  inputs/max_capasold.csv
+$include  inputs/max_capas.csv
 $offdelim
 / ;
 parameter capex(tec) 'annualized power capex cost in M€/GW/year'
@@ -104,7 +107,7 @@ $offdelim
 parameter costs2(scenCO2,costCO2) 'the values of changing parameters'
 /
 $ondelim
-$include inputs/scenariosCO2x.csv
+$include inputs/scenariosCO2.csv
 $offdelim
 / ;
 parameter costs3(scenWind,wind,costtype) 'the values of gas price in each scenario'
