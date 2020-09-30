@@ -1,3 +1,7 @@
+$Ontext
+This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+Written by Behrang Shirizadeh, October 2020
+$Offtext
 *-------------------------------------------------------------------------------
 *                                Defining the sets
 *-------------------------------------------------------------------------------
@@ -74,25 +78,25 @@ $ondelim
 $include  inputs/max_capas.csv
 $offdelim
 / ;
-parameter capex(tec) 'annualized power capex cost in M€/GW/year'
+parameter capex(tec) 'annualized power capex cost in Mâ‚¬/GW/year'
 /
 $ondelim
 $include  inputs/annuitiesccs.csv
 $offdelim
 / ;
-parameter capex_en(str) 'annualized energy capex cost of storage technologies in M€/GWh/year'
+parameter capex_en(str) 'annualized energy capex cost of storage technologies in Mâ‚¬/GWh/year'
 /
 $ondelim
 $include  inputs/str_annuitiesccs.csv
 $offdelim
 / ;
-parameter fOM(tec) 'annualized fixed operation and maintenance costs M€/GW/year'
+parameter fOM(tec) 'annualized fixed operation and maintenance costs Mâ‚¬/GW/year'
 /
 $ondelim
 $include  inputs/fO&Mccs.csv
 $offdelim
 / ;
-Parameter vOM(tec) 'Variable operation and maintenance costs in M€/GWh'
+Parameter vOM(tec) 'Variable operation and maintenance costs in Mâ‚¬/GWh'
 /
 $ondelim
 $include  inputs/vO&Mccs.csv
@@ -122,10 +126,10 @@ $ondelim
 $include inputs/scenariosPV.csv
 $offdelim
 /;
-parameter fixed_costs(tec) 'yearly fixed cost of each tec in M€/GW/year' ;
+parameter fixed_costs(tec) 'yearly fixed cost of each tec in Mâ‚¬/GW/year' ;
 fixed_costs(tec) = capex(tec) + fOM(tec);
-parameter s_capex(str) 'charging related annuity of storage in M€/GW/year' /PHS 0, battery 0, methanation1 84.16086, methanation2 84.16086/;
-parameter s_opex(str)    'charging related fOM of storage in M€/GW/year'   /PHS 0, battery 0, methanation1 59.25, methanation2 59.25/;
+parameter s_capex(str) 'charging related annuity of storage in Mâ‚¬/GW/year' /PHS 0, battery 0, methanation1 84.16086, methanation2 84.16086/;
+parameter s_opex(str)    'charging related fOM of storage in Mâ‚¬/GW/year'   /PHS 0, battery 0, methanation1 59.25, methanation2 59.25/;
 parameter eta_in(str) 'charging efifciency of storage technologies' /PHS 0.95, battery 0.9, methanation1 0.59, methanation2 0.59/;
 parameter eta_out(str) 'discharging efficiency of storage technolgoies' /PHS 0.9, battery 0.95, methanation1 0.45, methanation2 0.45/;
 scalar eta_ocgt 'efficiency of OCGT power plants' /0.45/;
@@ -154,7 +158,7 @@ variables        GENE(tec,h)     'hourly energy generation in TWh'
                  RSV(frr,h)      'required upward frequency restoration reserve in GW'
                  E_DAC(h)        'Needed electricity for direct air capturing as GWh/MtCO2'
                  G_DAC(h)        'Needed gas for direct air capturing as GWh/MtCO2'
-                 COST            'final investment cost in b€'
+                 COST            'final investment cost in bâ‚¬'
 
 positive variables GENE(tec,h),CAPA(tec),STORAGE(str,h), S(str),STORED(str,h),CAPACITY(str),RSV(frr,h),E_DAC(h),G_DAC(h);
 
@@ -243,13 +247,13 @@ parameter lcoe_sys2;
 parameter str_loss 'yearly storage related loss in % of power production';
 parameter lc 'load curtailment of the network';
 parameter spot_price(h) 'marginal cost'    ;
-parameter marginal_cost 'average value over the year of spot price in €/MWh';
+parameter marginal_cost 'average value over the year of spot price in â‚¬/MWh';
 parameter CO2_positive 'positive CO2 emission in MtCO2/year';
 parameter CO2_negative 'negative CO2 emission in MtCO2/year';
 parameter CO2_emission 'the overall CO2 balance in MtCO2/year';
 parameter negative_CCS 'yearly CO2 captured by CCS in MtCO2/year';
 parameter positive_CCS 'yearly CO2 emitted by CCS in MtCO2/year';
-parameter real_cost 'the overall real cost of the system without considering carbon tax or remunerations in b€';
+parameter real_cost 'the overall real cost of the system without considering carbon tax or remunerations in bâ‚¬';
 parameter nSTORAGE(str,h);
 file summary_csv /'outputs/results.csv' / ;
 put summary_csv;
